@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/22 10:17:33 by bcastelo          #+#    #+#             */
-/*   Updated: 2023/07/22 21:06:29 by bcastelo         ###   ########.fr       */
+/*   Created: 2023/07/22 18:49:55 by bcastelo          #+#    #+#             */
+/*   Updated: 2023/07/22 18:58:52 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+void	clean_exit(t_data *data, int error)
 {
-	t_data	data;
-
-	(void) argv;
-	if (argc < 2)
-		exit(0);
-	initialize_data(&data);
-	ft_printf("Ready to continue\n");
-	clean_exit(&data, 0);
-	exit(0);
+	clear_data(data);
+	if (error)
+		ft_putendl_fd("Error", 2);
+	exit(error);
 }
