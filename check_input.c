@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 18:17:50 by bcastelo          #+#    #+#             */
-/*   Updated: 2023/07/23 18:21:26 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/07/24 21:11:35 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void	check_signal(t_data *data, char **numbers)
 	i = 0;
 	while (numbers[i] != NULL)
 	{
+		if (ft_strlen(numbers[i]) == 1
+			&& !ft_charinset(numbers[i][0], "0123456789"))
+			input_error(data, numbers);
 		if (!ft_charinset(numbers[i][0], "-+0123456789"))
 			input_error(data, numbers);
 		i++;
@@ -75,5 +78,18 @@ void	check_max_integer(t_data *data, char **numbers)
 		else if (ft_strncmp(start, "2147483647", ft_strlen(start)) > 0)
 			input_error(data, numbers);
 		i++;
+	}
+}
+
+void	check_duplicates(t_data *data, char **numbers, int i)
+{
+	t_list	*next;
+
+	next = *data->stack_a;
+	while (next != NULL)
+	{
+		if (*(int *)next->content == ft_atoi(numbers[i]))
+			input_error(data, numbers);
+		next = next->next;
 	}
 }

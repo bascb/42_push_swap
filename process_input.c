@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 12:26:04 by bcastelo          #+#    #+#             */
-/*   Updated: 2023/07/23 18:49:32 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/07/24 21:49:18 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,19 @@ void	insert_number(t_data *data, char **numbers)
 	i = 0;
 	while (numbers[i] != NULL)
 	{
+		check_duplicates(data, numbers, i);
 		value = ft_calloc(1, sizeof(int));
 		if (!value)
 			input_error(data, numbers);
 		*value = ft_atoi(numbers[i]);
 		new = ft_lstnew(value);
 		if (!new)
+		{
+			free(value);
 			input_error(data, numbers);
+		}
 		ft_lstadd_back(data->stack_a, new);
+		data->size_a++;
 		i++;
 	}
 }
