@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 10:00:07 by bcastelo          #+#    #+#             */
-/*   Updated: 2023/07/24 23:11:35 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/07/25 22:57:35 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,25 +53,31 @@ void	check_max_integer(t_data *data, char **numbers);
 
 void	check_duplicates(t_data *data, char **numbers, int i);
 
+int		check_sorting(t_list **lst);
+
+void	execute_move(t_data *data, char *move);
+
+void	register_move(t_data *data, char *move);
+
 void	push_a(t_data *data);
 
 void	push_b(t_data *data);
 
-void	swap_a(t_data *data);
+void	swap_a(t_data *data, int simultaneous);
 
-void	swap_b(t_data *data);
+void	swap_b(t_data *data, int simultaneous);
 
 void	swap_s(t_data *data);
 
-void	rotate_a(t_data *data);
+void	rotate_a(t_data *data, int simultaneous);
 
-void	rotate_b(t_data *data);
+void	rotate_b(t_data *data, int simultaneous);
 
 void	rotate_r(t_data *data);
 
-void	reverse_a(t_data *data);
+void	reverse_a(t_data *data, int simultaneous);
 
-void	reverse_b(t_data *data);
+void	reverse_b(t_data *data, int simultaneous);
 
 void	reverse_r(t_data *data);
 

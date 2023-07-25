@@ -2,8 +2,8 @@ NAME = push_swap
 BONUS_NAME = checker
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-SRC = push_swap manage_data utils process_input check_input push_operations swap_operations rotate_operations reverse_operations
-BONUS_SRC = checker manage_data utils process_input check_input push_operations swap_operations rotate_operations reverse_operations
+SRC = push_swap manage_data utils process_input check_input manage_moves push_operations swap_operations rotate_operations reverse_operations
+BONUS_SRC = checker manage_data utils process_input check_input manage_moves push_operations swap_operations rotate_operations reverse_operations
 LIBFT = libft.a
 
 RED = \033[0;91m

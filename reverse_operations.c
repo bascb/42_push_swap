@@ -6,13 +6,13 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 22:20:15 by bcastelo          #+#    #+#             */
-/*   Updated: 2023/07/24 22:41:26 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/07/25 21:39:58 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	reverse_a(t_data *data)
+void	reverse_a(t_data *data, int simultaneous)
 {
 	t_list	*first;
 	t_list	*last;
@@ -28,9 +28,11 @@ void	reverse_a(t_data *data)
 	first = *data->stack_a;
 	*data->stack_a = last;
 	last->next = first;
+	if (!simultaneous)
+		register_move(data, "rra");
 }
 
-void	reverse_b(t_data *data)
+void	reverse_b(t_data *data, int simultaneous)
 {
 	t_list	*first;
 	t_list	*last;
@@ -46,10 +48,13 @@ void	reverse_b(t_data *data)
 	first = *data->stack_b;
 	*data->stack_b = last;
 	last->next = first;
+	if (!simultaneous)
+		register_move(data, "rrb");
 }
 
 void	reverse_r(t_data *data)
 {
-	reverse_a(data);
-	reverse_b(data);
+	reverse_a(data, 1);
+	reverse_b(data, 1);
+	register_move(data, "rrr");
 }
