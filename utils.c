@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 18:49:55 by bcastelo          #+#    #+#             */
-/*   Updated: 2023/07/25 22:58:27 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/07/26 18:44:12 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,18 @@ void	free_matrix(void **matrix)
 
 int	check_sorting(t_list **lst)
 {
-	t_lst	*current;
+	t_list	*current;
+	int		*current_value;
+	int		*next_value;
 
 	if (!lst || !*lst)
 		return (0);
 	current = *lst;
 	while (current->next)
 	{
-		if (*current->content > *current->next->content)
+		current_value = (int *) current->content;
+		next_value = (int *) current->next->content;
+		if (*current_value > *next_value)
 			return (0);
 		current = current->next;
 	}

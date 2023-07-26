@@ -6,83 +6,47 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 20:46:17 by bcastelo          #+#    #+#             */
-/*   Updated: 2023/07/25 22:04:53 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/07/26 19:31:14 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	execute_push(t_data *data, char *move)
+int	valid_move(char *test, char *move)
 {
-	if (ft_strncmp(move, "pa", ft_strlen(move)) == 0)
-	{
-		free(move);
-		push_a(data);
-	}
-	else if (ft_strncmp(move, "pb", ft_strlen(move)) == 0)
-	{
-		free(move);
-		push_b(data);
-	}
-	else
-	{
-		free(move);
-		clean_exit(data, 1);
-	}
-}
+	size_t	len;
 
-void	execute_swap(t_data *data, char *move)
-{
-	if (ft_strncmp(move, "sa", ft_strlen(move)) == 0)
-	{
-		free(move);
-		swap_a(data, 0);
-	}
-	else if (ft_strncmp(move, "sb", ft_strlen(move)) == 0)
-	{
-		free(move);
-		swap_b(data, 0);
-	}
-	else if (ft_strncmp(move, "ss", ft_strlen(move)) == 0)
-	{
-		free(move);
-		swap_s(data);
-	}
-	else
-	{
-		free(move);
-		clean_exit(data, 1);
-	}
-}
-
-void	execute_rotate(t_data *data, char *move)
-{
-	
+	len = ft_strlen(move);
+	if (ft_strlen(test) > len)
+		len = ft_strlen(test);
+	if (ft_strncmp(move, test, len) == 0)
+		return (1);
+	return (0);
 }
 
 void	execute_move(t_data *data, char *move)
 {
-	if (ft_strncmp(move, "pa", ft_strlen(move)) == 0)
+	if (valid_move("pa", move))
 		push_a(data);
-	else if (ft_strncmp(move, "pb", ft_strlen(move)) == 0)
+	else if (valid_move("pb", move))
 		push_b(data);
-	else if (ft_strncmp(move, "sa", ft_strlen(move)) == 0)
+	else if (valid_move("sa", move))
 		swap_a(data, 0);
-	else if (ft_strncmp(move, "sb", ft_strlen(move)) == 0)
+	else if (valid_move("sb", move))
 		swap_b(data, 0);
-	else if (ft_strncmp(move, "ss", ft_strlen(move)) == 0)
+	else if (valid_move("ss", move))
 		swap_s(data);
-	else if (ft_strncmp(move, "ra", ft_strlen(move)) == 0)
+	else if (valid_move("ra", move))
 		rotate_a(data, 0);
-	else if (ft_strncmp(move, "rb", ft_strlen(move)) == 0)
+	else if (valid_move("rb", move))
 		rotate_b(data, 0);
-	else if (ft_strncmp(move, "rr", ft_strlen(move)) == 0)
+	else if (valid_move("rr", move))
 		rotate_r(data);
-	else if (ft_strncmp(move, "rra", ft_strlen(move)) == 0)
+	else if (valid_move("rra", move))
 		reverse_a(data, 0);
-	else if (ft_strncmp(move, "rrb", ft_strlen(move)) == 0)
+	else if (valid_move("rrb", move))
 		reverse_b(data, 0);
-	else if (ft_strncmp(move, "rrr", ft_strlen(move)) == 0)
+	else if (valid_move("rrr", move))
 		reverse_r(data);
 	else
 		clean_exit(data, 1);

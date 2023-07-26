@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 16:12:41 by bcastelo          #+#    #+#             */
-/*   Updated: 2023/07/22 21:05:28 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/07/26 18:39:41 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	initialize_data(t_data *data)
 	data->min = 0;
 	data->size_a = 0;
 	data->size_b = 0;
+	data->move = NULL;
 	data->stack_a = ft_calloc(1, sizeof(t_data *));
 	data->stack_b = ft_calloc(1, sizeof(t_data *));
 	data->history = ft_calloc(1, sizeof(t_data *));
@@ -38,6 +39,11 @@ void	clear_data(t_data *data)
 	{
 		close(data->fd);
 		data->fd = -1;
+	}
+	if (data->move != NULL)
+	{
+		free(data->move);
+		data->move = NULL;
 	}
 	if (data->stack_a != NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 10:00:07 by bcastelo          #+#    #+#             */
-/*   Updated: 2023/07/25 22:57:35 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/07/26 18:37:24 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct s_data
 	int			min;
 	int			size_a;
 	int			size_b;
+	char		*move;
 	t_list		**stack_a;
 	t_list		**stack_b;
 	t_list		**history;
