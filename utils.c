@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 18:49:55 by bcastelo          #+#    #+#             */
-/*   Updated: 2023/07/26 18:44:12 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/07/29 14:34:07 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,60 @@ int	check_sorting(t_list **lst)
 		current = current->next;
 	}
 	return (1);
+}
+
+t_pos	stack_min(t_list **stack)
+{
+	t_pos	minimum;
+	t_list	*aux;
+	int		i;
+
+	if (!stack || !*stack)
+	{
+		minimum.index = -1;
+		return (minimum);
+	}
+	aux = *stack;
+	minimum.value = *(int *)aux->content;
+	minimum.index = 0;
+	i = 0;
+	while (aux != NULL)
+	{
+		if (*(int *)aux->content < minimum.value)
+		{
+			minimum.value = *(int *)aux->content;
+			minimum.index = i;
+		}
+		i++;
+		aux = aux->next;
+	}
+	return (minimum);
+}
+
+t_pos	stack_max(t_list **stack)
+{
+	t_pos	maximum;
+	t_list	*aux;
+	int		i;
+
+	if (!stack || !*stack)
+	{
+		maximum.index = -1;
+		return (maximum);
+	}
+	aux = *stack;
+	maximum.value = *(int *)aux->content;
+	maximum.index = 0;
+	i = 0;
+	while (aux != NULL)
+	{
+		if (*(int *)aux->content > maximum.value)
+		{
+			maximum.value = *(int *)aux->content;
+			maximum.index = i;
+		}
+		i++;
+		aux = aux->next;
+	}
+	return (maximum);
 }

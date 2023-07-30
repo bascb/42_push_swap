@@ -6,7 +6,7 @@
 /*   By: bcastelo <bcastelo@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/22 10:00:07 by bcastelo          #+#    #+#             */
-/*   Updated: 2023/07/26 18:37:24 by bcastelo         ###   ########.fr       */
+/*   Updated: 2023/07/30 09:53:23 by bcastelo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,12 @@ typedef struct s_data
 	int			fd;
 }				t_data;
 
+typedef struct s_pos
+{
+	int			value;
+	int			index;
+}				t_pos;
+
 void	initialize_data(t_data *data);
 
 void	clear_data(t_data *data);
@@ -56,7 +62,17 @@ void	check_duplicates(t_data *data, char **numbers, int i);
 
 int		check_sorting(t_list **lst);
 
+int		check_reverse_sorting(t_list **lst);
+
+t_pos	stack_min(t_list **stack);
+
+t_pos	stack_max(t_list **stack);
+
 void	execute_move(t_data *data, char *move);
+
+void	execute_moves(t_data *data, t_list **moves);
+
+void	insert_move(t_data *data, t_list **moves_lst, char *move);
 
 void	register_move(t_data *data, char *move);
 
@@ -81,5 +97,17 @@ void	reverse_a(t_data *data, int simultaneous);
 void	reverse_b(t_data *data, int simultaneous);
 
 void	reverse_r(t_data *data);
+
+void	select_algorithm(t_data *data);
+
+void	sort_three(t_data *data);
+
+void	sort_5(t_data *data);
+
+void	sort_b(t_data *data);
+
+void	sort_a(t_data *data);
+
+void	print_stacks(t_data *data, t_list *a, t_list *b);
 
 #endif
