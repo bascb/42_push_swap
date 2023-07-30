@@ -100,13 +100,18 @@ void	reverse_only_a(t_data *data, t_list **moves, int *rot)
 {
 	int	ra;
 	int	rb;
+	int	rr;
 
 	ra = -rot[0];
 	rb = rot[1];
-	if (ra > data->size_b - rb)
+	if (ra >= data->size_b - rb)
 	{
-		while (ra-- > 0)
+		rr = data->size_b - rb;
+		ra -= rr;
+		while (rr-- > 0)
 			insert_move(data, moves, "rrr");
+		while (ra-- > 0)
+			insert_move(data, moves, "rra");
 	}
 	else
 	{
@@ -122,13 +127,18 @@ void	reverse_only_b(t_data *data, t_list **moves, int *rot)
 {
 	int	ra;
 	int	rb;
+	int	rr;
 
 	ra = rot[0];
 	rb = -rot[1];
-	if (rb > data->size_a - ra)
+	if (rb >= data->size_a - ra)
 	{
-		while (rb-- > 0)
+		rr = data->size_a - ra;
+		rb -= rr;
+		while (rr-- > 0)
 			insert_move(data, moves, "rrr");
+		while (rb-- > 0)
+			insert_move(data, moves, "rrb");
 	}
 	else
 	{

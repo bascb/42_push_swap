@@ -72,10 +72,10 @@ void	check_max_integer(t_data *data, char **numbers)
 			return ;
 		if (numbers[i][0] == '-')
 		{
-			if (ft_strncmp(start, "2147483648", ft_strlen(start)) > 0)
+			if (ft_strncmp(start, "2147483648", ft_strlen(start)) != 0)
 				input_error(data, numbers);
 		}
-		else if (ft_strncmp(start, "2147483647", ft_strlen(start)) > 0)
+		else if (ft_strncmp(start, "2147483647", ft_strlen(start)) != 0)
 			input_error(data, numbers);
 		i++;
 	}
